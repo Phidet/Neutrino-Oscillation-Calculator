@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neutrino Transition Probability Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include Math.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-container">
+            <h2 class="title">Neutrino Transition Probability Calculator</h2>
+            <form id="calculator-form">
+              <fieldset>
+                <legend>Oscillation Parameters:</legend>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="theta12">θ<sub>12</sub>:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="theta12" value="33.44" step="any">
+                      <span class="unit">°</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="theta23">θ<sub>23</sub>:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="theta23" value="49.2" step="any">
+                      <span class="unit">°</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="theta13">θ<sub>13</sub>:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="theta13" value="8.57" step="any">
+                      <span class="unit">°</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="delta">δ:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="delta" value="195" step="any">
+                      <span class="unit">°</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="m21">Δm<sub>21</sub><sup>2</sup>:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="m21" value="7.53e-5" step="any">
+                      <span class="unit">eV²</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="m31">Δm<sub>31</sub><sup>2</sup>:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="m31" value="2.44e-3" step="any">
+                      <span class="unit">eV²</span>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+          
+              <fieldset>
+                <legend>Experimental Options:</legend>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="energy">Energy E:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="energy" value="600" step="any">
+                      <span class="unit">MeV</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="alpha">Initial Flavor:</label>
+                    <select id="alpha">
+                      <option value="0">ν<sub>e</sub></option>
+                      <option value="1" selected>ν<sub>μ</sub></option>
+                      <option value="2">ν<sub>τ</sub></option>
+                      <option value="3">ν̅<sub>e</sub></option>
+                      <option value="4">ν̅<sub>μ</sub></option>
+                      <option value="5">ν̅<sub>τ</sub></option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+          
+              <fieldset>
+                <legend>Plot Options:</legend>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="distance-start">Distance Start:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="distance-start" value="0" step="any">
+                      <span class="unit">km</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="distance-end">Distance End:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="distance-end" value="1000" step="any">
+                      <span class="unit">km</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="distance-step">Step:</label>
+                    <div class="input-with-unit">
+                      <input type="number" id="distance-step" value="10" step="any">
+                      <span class="unit">km</span>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+          
+              <button type="button" id="plot">Update Plot</button>
+            </form>
+        </div>
+        <div class="plot-container" style="height: 100%;">
+            <canvas id="flavorPlot"></canvas>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

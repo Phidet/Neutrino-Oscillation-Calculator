@@ -1,0 +1,168 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 10px;
+    height: calc(100vh - 20px); /* Adjust height to account for padding */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.calculator-container, .plot-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.calculator-container {
+    flex: 1;
+    max-width: 33%;
+}
+
+.plot-container {
+    flex: 2;
+    height: 100%;
+}
+
+.plot-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    flex: 1;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 100px;
+}
+
+.form-group label {
+    font-weight: bold;
+    min-height: 25px;
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Use ellipsis for overflow text */
+}
+
+.input-with-unit {
+    position: relative;
+}
+
+.input-with-unit input {
+    padding-right: 40px; /* Adjust padding to make space for the unit */
+}
+
+.input-with-unit .unit {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+}
+
+input[type="number"],
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-appearance: textfield; /* Remove increment and decrement buttons */
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Remove increment and decrement buttons */
+    margin: 0;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result-box {
+    margin-top: 20px;
+    background-color: #e6f7ff;
+    padding: 15px;
+    border: 1px solid #b3e0ff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.result-box div {
+    flex: 1;
+    text-align: center;
+}
+
+.plot-container .title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.plot-container .form-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.plot-container canvas {
+    max-width: 100%;
+    height: 100%;
+    flex: 1;
+}
