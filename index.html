@@ -6,59 +6,70 @@
     <title>Neutrino Transition Probability Calculator</title>
     <link rel="stylesheet" href="style.css">
     <!-- Include Math.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/14.0.1/math.min.js"></script>
     <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="calculator-container">
-            <h2 class="title">Neutrino Transition Probability Calculator</h2>
+            <h2 class="title">Neutrino Oscillation Calculator</h2>
+            <!-- <p>Check the mass squared differences and names make snese and are consistend between nufit and wiki hierarchy diagaram.</p> -->
             <form id="calculator-form">
               <fieldset>
                 <legend>Oscillation Parameters:</legend>
+                <div id="oscillation-warning-placeholder"></div>
                 <div class="form-row">
                   <div class="form-group">
                     <label for="theta12">θ<sub>12</sub>:</label>
                     <div class="input-with-unit">
-                      <input type="number" id="theta12" value="33.44" step="any">
+                      <input type="number" id="theta12" value="33.68" step="any">
                       <span class="unit">°</span>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="theta23">θ<sub>23</sub>:</label>
                     <div class="input-with-unit">
-                      <input type="number" id="theta23" value="49.2" step="any">
+                      <input type="number" id="theta23" value="48.5" step="any">
                       <span class="unit">°</span>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="theta13">θ<sub>13</sub>:</label>
                     <div class="input-with-unit">
-                      <input type="number" id="theta13" value="8.57" step="any">
+                      <input type="number" id="theta13" value="8.52" step="any">
                       <span class="unit">°</span>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="delta">δ:</label>
                     <div class="input-with-unit">
-                      <input type="number" id="delta" value="195" step="any">
+                      <input type="number" id="delta" value="177" step="any">
                       <span class="unit">°</span>
                     </div>
                   </div>
+                <!-- </div>
+                <div class="form-row"> -->
                   <div class="form-group">
-                    <label for="m21">Δm<sub>21</sub><sup>2</sup>:</label>
+                    <label for="matm">Δm<sup>2</sup><sub>atm</sub>(Δm<sup>2</sup><sub id="matm_label">32</sub>):</label>
                     <div class="input-with-unit">
-                      <input type="number" id="m21" value="7.53e-5" step="any">
+                      <input type="number" id="matm" value="2.534e-3" step="any">
                       <span class="unit">eV²</span>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="m31">Δm<sub>31</sub><sup>2</sup>:</label>
+                    <label for="msol">Δm<sup>2</sup><sub>sol</sub>(Δm<sup>2</sup><sub>21</sub>):</label>
                     <div class="input-with-unit">
-                      <input type="number" id="m31" value="2.44e-3" step="any">
+                      <input type="number" id="msol" value="7.49e-5" step="any">
                       <span class="unit">eV²</span>
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="hierarchy">Hierarchy:</label>
+                    <select id="hierarchy">
+                      <option value="normal" selected>Normal</option>
+                      <option value="inverted">Inverted</option>
+                    </select>
                   </div>
                 </div>
               </fieldset>
@@ -69,15 +80,15 @@
                   <div class="form-group">
                     <label for="energy">Energy E:</label>
                     <div class="input-with-unit">
-                      <input type="number" id="energy" value="600" step="any">
+                      <input type="number" id="energy" value="100" step="any">
                       <span class="unit">MeV</span>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="alpha">Initial Flavor:</label>
                     <select id="alpha">
-                      <option value="0">ν<sub>e</sub></option>
-                      <option value="1" selected>ν<sub>μ</sub></option>
+                      <option value="0" selected>ν<sub>e</sub></option>
+                      <option value="1">ν<sub>μ</sub></option>
                       <option value="2">ν<sub>τ</sub></option>
                       <option value="3">ν̅<sub>e</sub></option>
                       <option value="4">ν̅<sub>μ</sub></option>
@@ -89,6 +100,7 @@
           
               <fieldset>
                 <legend>Plot Options:</legend>
+                <div id="plot-warning-placeholder"></div>
                 <div class="form-row">
                   <div class="form-group">
                     <label for="distance-start">Distance Start:</label>
@@ -100,21 +112,29 @@
                   <div class="form-group">
                     <label for="distance-end">Distance End:</label>
                     <div class="input-with-unit">
-                      <input type="number" id="distance-end" value="1000" step="any">
+                      <input type="number" id="distance-end" value="3400" step="any">
                       <span class="unit">km</span>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="distance-step">Step:</label>
                     <div class="input-with-unit">
-                      <input type="number" id="distance-step" value="10" step="any">
+                      <input type="number" id="distance-step" value="5" step="any">
                       <span class="unit">km</span>
                     </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="stacked">Style:</label>
+                    <select id="stacked">
+                      <option value="true" selected>Stacked</option>
+                      <option value="false">Lines</option>
+                    </select>
                   </div>
                 </div>
               </fieldset>
           
               <button type="button" id="plot">Update Plot</button>
+              <p class="footer-text">Made by <a href="#">Phidet</a> | <a href="#">GitHub</a></p>
             </form>
         </div>
         <div class="plot-container" style="height: 100%;">
