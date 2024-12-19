@@ -139,7 +139,7 @@ function checkPlotPoints() {
             warning.id = 'plot-warning';
             warning.style.color = 'red';
             warning.style.fontWeight = 'bold';
-            warning.textContent = 'Warning: The specified settings will compute more than 5,000 points per flavour.';
+            warning.textContent = 'Warning: With the specified settings a large number of points need to be calculated.';
             plotOptionsFieldset.insertBefore(warning, plotOptionsFieldset.firstChild);
         }
     } else {
