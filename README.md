@@ -1,4 +1,4 @@
-# Neutrino Oscillation Calculator - [Go to Calculator](http://osc.det.je/)
+# Neutrino Oscillation Calculator - [Try it](http://osc.det.je/)
 
 ## Overview
 A web tool to calculate and visualise neutrino flavour oscillations.
